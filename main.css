@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    --scalar: 1.68;
+    --scale-0: calc(1rem / var(--scalar));
+    --scale-1: 1rem;
+    --scale-2: calc(1rem * var(--scalar));
+    --scale-3: calc(1rem * var(--scalar)* var(--scalar));
+    --scale-4: calc(1rem * var(--scalar)* var(--scalar)* var(--scalar));
+}
+
+html {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1, h2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h1 {
+    font-size: var(--scale-4);
+    line-height: calc(var(--scale-4) / (5/4));
+}
+
+h2 {
+    font-size: var(--scale-3);
+    line-height: calc(var(--scale-3) / (5/4));
+}
+
+h1~p, h2~p {
+    margin-left: var(--scale-0);
+}
+
+p {
+    max-width: 60ch;
+}
+
+/*util*/
+
+.xPad {
+    padding-inline: var(--scale-1);
+}
+
+.yPad {
+    padding-block: var(--scale-1);
+}
+
+.stack>*:not(:first-child) {
+    margin-top: var(--scale-1);
+}
+
+.heavyBottom>*+:last-child {
+    margin-top: var(--scale-4);
+}
+
+/*editable-style*/
+
+article>* {
+    transition: padding 200ms;
+}
+
+.editable-underline {
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: hotpink;
+    text-decoration-thickness: 1px;
+    border: 1px black dashed;
+    padding: 0.25rem;
+    padding-bottom: 0.75rem;
+}
+
+/*edit button*/
+
+#edit {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+}
+
+#edit:not(:checked)::before {
+    content: '\1F415';
+    font-size: var(--scale-2);
+}
+
+#edit:checked::before {
+    content: '\1F408';
+    font-size: var(--scale-2);
+}
